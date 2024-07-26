@@ -22,16 +22,10 @@ export class AppComponent {
   }
 
   getForecasts() {
-    this.http.get<WeatherForecast[]>('/weatherforecast')
+    this.http.get<WeatherForecast[]>('/api/WeatherForecast')
       .subscribe(result => {
           console.log('result:', result);
         }
-        /*(result) => {
-          this.forecasts = result;
-        },
-        (error) => {
-          console.error(error);
-        }*/
       );
   }
 }
