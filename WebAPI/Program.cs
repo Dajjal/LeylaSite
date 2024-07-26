@@ -1,8 +1,33 @@
+using System.Globalization;
+using Infrastructure.ServiceExt;
+
+// Выставляем культуру по умолчанию
+var cultureInfo = new CultureInfo("kk-KZ");
+CultureInfo.CurrentCulture = cultureInfo;
+CultureInfo.CurrentUICulture = cultureInfo;
+
+// Сборщик
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+// Регистрируем сервисы сайта
+builder.Services.RegisterSiteServices(builder.Configuration);
 
+// Настраиваем CORS
+/*builder.Services
+    .AddCors(options =>
+        options.AddPolicy("siteCors",
+            x => x.AllowCredentials()
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+                .WithOrigins(
+                    "https://localhost:4200",
+                    "http://localhost:4200",
+                    "http://10.10.21.32:8080"
+                )));*/
+
+// Добавление контроллеров и JSON сериализации
 builder.Services.AddControllers();
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -20,11 +45,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
 app.UseAuthorization();
-
 app.MapControllers();
-
 app.MapFallbackToFile("/index.html");
-
 app.Run();
