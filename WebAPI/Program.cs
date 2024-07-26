@@ -1,5 +1,6 @@
 using System.Globalization;
 using Infrastructure.ServiceExt;
+using WebAPI;
 
 // Выставляем культуру по умолчанию
 var cultureInfo = new CultureInfo("kk-KZ");
@@ -44,6 +45,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseMiddleware<RequestLoggingMiddleware>();
 app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();
