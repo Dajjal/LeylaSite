@@ -1,5 +1,9 @@
 using System.Globalization;
+using System.Text;
 using Infrastructure.ServiceExt;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.IdentityModel.Tokens;
 using WebAPI;
 
 // Выставляем культуру по умолчанию
@@ -48,6 +52,9 @@ if (app.Environment.IsDevelopment())
 app.UseMiddleware<RequestLoggingMiddleware>();
 app.UseHttpsRedirection();
 app.UseAuthorization();
+
+// app.MapIdentityApi<IdentityUser>();
+
 app.MapControllers();
 app.MapFallbackToFile("/index.html");
 app.Run();

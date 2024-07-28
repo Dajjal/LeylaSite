@@ -1,1 +1,67 @@
-<button (click)="getForecasts()">GO TEST</button>
+<header>
+  <nav class="fixed-top">
+
+    <input type="checkbox" id="navigation_checkbox">
+    <label for="navigation_checkbox">
+      <i class="fa-solid fa-bars" id="navigation_bars"></i>
+      <i class="fa-solid fa-times" id="navigation_times"></i>
+    </label>
+
+    <a routerLink="about" (click)="collapse_nav()">
+      <img ngSrc="assets/images/smm-logo.png" alt="site logo" height="45" width="60">
+    </a>
+
+    <ul>
+      <li>
+        <a routerLink="about" routerLinkActive="active" (click)="collapse_nav()">
+          Обо мне
+        </a>
+      </li>
+      <li>
+        <a routerLink="service" routerLinkActive="active" (click)="collapse_nav()">
+          Услуги
+        </a>
+      </li>
+      <li>
+        <a routerLink="portfolio" routerLinkActive="active" (click)="collapse_nav()">
+          Портфолио
+        </a>
+      </li>
+      <li>
+        <a routerLink="contact" routerLinkActive="active" (click)="collapse_nav()">
+          Контакты
+        </a>
+      </li>
+      <li class="sm-icon first">
+        <a class="first-sm-icon sm-icon icon-instagram" href="https://www.instagram.com/leyla_zhar" target="_blank">
+          <i class="fa-brands fa-instagram"></i>
+        </a>
+      </li>
+      <li class="sm-icon">
+        <a class="sm-icon icon-whatsapp" href="https://wa.me/+77074428422" target="_blank">
+          <i class="fa-brands fa-whatsapp"></i>
+        </a>
+      </li>
+      <li class="sm-icon">
+        <a class="sm-icon icon-telegram" href="https://t.me/+77074428422" target="_blank">
+          <i class="fa-brands fa-telegram"></i>
+        </a>
+      </li>
+    </ul>
+  </nav>
+</header>
+
+<section class="site-container">
+  <router-outlet></router-outlet>
+</section>
+
+<footer>
+
+</footer>
+
+<div class="scroll-top" id="scroll_top">
+  <button (click)="scroll_top()">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+</div>
+

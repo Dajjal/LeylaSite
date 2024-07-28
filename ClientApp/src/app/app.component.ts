@@ -14,18 +14,56 @@ interface WeatherForecast {
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'ClientApp';
+  lastKnownScrollPosition = 0;
+  ticking = false;
 
-  public forecasts: WeatherForecast[] = [];
-
-  constructor(private http: HttpClient) {
+  doSomething(scrollPos: number) {
+    if (scrollPos > (window.innerHeight / 2)) {
+      /*anime({
+        targets: document.querySelector('#scroll_top'),
+        translateY: -(32 + 60),
+        duration: 500,
+        easing: 'easeInOutExpo'
+      });
+    } else {
+      anime({
+        targets: document.querySelector('#scroll_top'),
+        translateY: 0,
+        duration: 500,
+        easing: 'easeInOutExpo'
+      });*/
+    }
   }
 
-  getForecasts() {
-    this.http.get<WeatherForecast[]>('/api/WeatherForecast')
-      .subscribe(result => {
-          console.log('result:', result);
-        }
-      );
+  // noinspection DuplicatedCode
+  constructor() {
+    document.addEventListener("scroll", (event) => {
+      this.lastKnownScrollPosition = window.scrollY;
+      if (!this.ticking) {
+        window.requestAnimationFrame(() => {
+          this.doSomething(this.lastKnownScrollPosition);
+          this.ticking = false;
+        });
+        this.ticking = true;
+      }
+    });
   }
+
+  collapse_nav = () => {
+    let check_box = document.getElementById('navigation_checkbox')
+    if (check_box) {
+      // @ts-ignore
+      if (check_box.checked) {
+        setTimeout(() => {
+          // @ts-ignore
+          check_box.checked = false;
+        }, 200)
+      }
+    }
+  }
+
+  scroll_top = () => {
+    window.scrollTo(0, 0);
+  }
+
 }
