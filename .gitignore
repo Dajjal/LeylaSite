@@ -1,7 +1,7 @@
 bin/
 obj/
 /packages/
-riderModule.iml
+riderModule.ini
 /_ReSharper.Caches/
 .idea
-WebAPI/Properties/PublishProfiles
+.vs
