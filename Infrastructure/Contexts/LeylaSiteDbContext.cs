@@ -4,5 +4,4 @@ namespace Infrastructure.Contexts;
 
 public class LeylaSiteDbContext(DbContextOptions<LeylaSiteDbContext> options) : DbContext(options)
 {
-    
 }

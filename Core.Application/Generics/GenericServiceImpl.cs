@@ -71,7 +71,7 @@ public class GenericServiceImpl<TEntity>(
     {
         try
         {
-            if (dto is null) throw new ArgumentNullException($"DataTransferObject is not provided");
+            if (dto is null) throw new ArgumentNullException("DataTransferObject is not provided");
             var entity = mapper.Map<TEntity>(dto);
             await repository.AddAsync(entity, cancellationToken);
             dto = mapper.Map<TDto>(entity);
@@ -92,7 +92,7 @@ public class GenericServiceImpl<TEntity>(
         try
         {
             // Checking for lice
-            if (dto is null) throw new ArgumentNullException($"DataTransferObject is not provided");
+            if (dto is null) throw new ArgumentNullException("DataTransferObject is not provided");
             var entity = await repository.GetByIdAsync(id, cancellationToken);
             if (entity is null)
                 throw new SqlNullValueException($"{typeof(TEntity).Name.Replace("Model", "")} with ID: {id} not found");

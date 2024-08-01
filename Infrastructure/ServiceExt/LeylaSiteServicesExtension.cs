@@ -11,7 +11,8 @@ namespace Infrastructure.ServiceExt;
 
 public static class LeylaSiteServicesExtension
 {
-    public static IServiceCollection RegisterLeylaSiteServices(this IServiceCollection services, IConfiguration configuration)
+    public static IServiceCollection RegisterLeylaSiteServices(this IServiceCollection services,
+        IConfiguration configuration)
     {
         #region Контекст Базы Данных
 
@@ -20,7 +21,7 @@ public static class LeylaSiteServicesExtension
                 builder => builder.MigrationsAssembly(typeof(LeylaSiteDbContext).Assembly.FullName)));
 
         #endregion
-        
+
         #region Внедрение зависимостей
 
         // Универсальный репозитори

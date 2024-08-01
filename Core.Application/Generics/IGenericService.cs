@@ -3,7 +3,7 @@
 namespace Core.Application.Generics;
 
 /// <summary>
-/// Интерфейс универсального сервиса
+///     Интерфейс универсального сервиса
 /// </summary>
 /// <typeparam name="TEntity">Модель описанная в Базе Данных (Таблица)</typeparam>
 public interface IGenericService<TEntity>

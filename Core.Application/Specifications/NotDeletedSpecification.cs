@@ -5,6 +5,8 @@ namespace Core.Application.Specifications;
 
 public sealed class NotDeletedSpecification<TEntity> : Specification<TEntity> where TEntity : AbstractGuidModel
 {
-    public NotDeletedSpecification() =>
+    public NotDeletedSpecification()
+    {
         Query.Where(q => q.IsDeleted == false);
+    }
 }

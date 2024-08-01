@@ -3,11 +3,8 @@
 namespace Core.Application.Mappings;
 
 /// <summary>
-/// Мапинги для сайта
+///     Мапинги для сайта
 /// </summary>
 public class LeylaSiteProfileMapping : Profile
 {
-    public LeylaSiteProfileMapping()
-    {
-    }
 }
