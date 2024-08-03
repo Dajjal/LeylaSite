@@ -5,4 +5,4 @@ using Infrastructure.Contexts;
 namespace Infrastructure.Generics;
 
 public class GenericRepositoryImpl<TEntity>(LeylaSiteDbContext dbContext)
-    : RepositoryBase<TEntity>(dbContext) where TEntity : AbstractGuidModel;
+    : RepositoryBase<TEntity>(dbContext) where TEntity : AbstractLogicalDeleteGuidModel;

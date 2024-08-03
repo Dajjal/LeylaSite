@@ -7,10 +7,10 @@ using Core.Domain.Abstracts;
 
 namespace Core.Application.Generics;
 
-public class GenericServiceImpl<TEntity>(
+public class GenericLogicalDeleteServiceImpl<TEntity>(
     IRepositoryBase<TEntity> repository,
     IMapperBase mapper) : IGenericService<TEntity>
-    where TEntity : AbstractGuidModel
+    where TEntity : AbstractLogicalDeleteGuidModel
 {
     public async Task<List<TDto>> ListAsync<TDto>(
         CancellationToken cancellationToken = default)
@@ -113,7 +113,7 @@ public class GenericServiceImpl<TEntity>(
         }
     }
 
-    public async Task<Guid> DeleteAsync(
+    public async Task<Guid> DeleteLogicalAsync(
         Guid id,
         CancellationToken cancellationToken = default)
     {
@@ -131,5 +131,10 @@ public class GenericServiceImpl<TEntity>(
             Console.WriteLine(e);
             throw;
         }
+    }
+
+    public Task<Guid> DeletePhysicalAsync(Guid id, CancellationToken cancellationToken = default)
+    {
+        throw new NotImplementedException();
     }
 }

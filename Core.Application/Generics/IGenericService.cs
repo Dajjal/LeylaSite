@@ -17,5 +17,6 @@ public interface IGenericService<TEntity>
 
     Task<TDto> AddAsync<TDto>(TDto dto, CancellationToken cancellationToken = default);
     Task<TDto> UpdateAsync<TDto>(Guid id, TDto dto, CancellationToken cancellationToken = default);
-    Task<Guid> DeleteAsync(Guid id, CancellationToken cancellationToken = default);
+    Task<Guid> DeleteLogicalAsync(Guid id, CancellationToken cancellationToken = default);
+    Task<Guid> DeletePhysicalAsync(Guid id, CancellationToken cancellationToken = default);
 }

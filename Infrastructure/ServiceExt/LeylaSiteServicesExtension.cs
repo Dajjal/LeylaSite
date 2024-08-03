@@ -14,20 +14,19 @@ public static class LeylaSiteServicesExtension
     public static IServiceCollection RegisterLeylaSiteServices(this IServiceCollection services,
         IConfiguration configuration)
     {
-        #region Контекст Базы Данных
-
+        // Контекст Базы Данных
         services.AddDbContext<LeylaSiteDbContext>(options =>
             options.UseNpgsql(configuration.GetConnectionString("ConnectionString"),
                 builder => builder.MigrationsAssembly(typeof(LeylaSiteDbContext).Assembly.FullName)));
 
-        #endregion
-
-        #region Внедрение зависимостей
+        #region Внедрение сервисов и репозитори
 
         // Универсальный репозитори
         services.AddScoped(typeof(IRepositoryBase<>), typeof(GenericRepositoryImpl<>));
-        // Универсальный сервис
-        services.AddScoped(typeof(IGenericService<>), typeof(GenericServiceImpl<>));
+        // Универсальный сервис с логическим удалением
+        services.AddScoped(typeof(IGenericService<>), typeof(GenericLogicalDeleteServiceImpl<>));
+        // Универсальный сервис с физическим удалением в Базе Данных
+        services.AddScoped(typeof(IGenericService<>), typeof(GenericPhysicalDeleteServiceImpl<>));
 
         #endregion
 
