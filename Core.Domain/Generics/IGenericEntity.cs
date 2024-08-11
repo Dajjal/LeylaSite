@@ -3,14 +3,14 @@
 namespace Core.Domain.Generics;
 
 /// <summary>
-///     Интерфейс для универсальной модели
+///     Интерфейс для универсальной сущности, содержащей первичный ключ.
 /// </summary>
-/// <typeparam name="TKey">Передаётся желаемый тип идентификатора</typeparam>
+/// <typeparam name="TKey">Тип данных для идентификатора сущности.</typeparam>
 public interface IGenericEntity<TKey>
 {
     /// <summary>
-    ///     Идентификатор - Первичный ключ
+    ///     Идентификатор сущности — первичный ключ.
     /// </summary>
     [Key]
-    public TKey? Id { get; set; }
+    TKey? Id { get; set; }
 }

@@ -5,5 +5,5 @@ using Core.Domain.Models.Store.Site;
 
 namespace Api.Controllers.Store.Admin;
 
-public class AdminProductController(IGenericService<ProductModel> service)
-    : GenericController<ProductModel, ProductDto>(service);
+public class AdminCategoryController(IGenericService<CategoryModel> service)
+    : GenericController<CategoryModel, CategoryDto>(service);

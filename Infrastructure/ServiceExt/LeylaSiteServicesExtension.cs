@@ -1,5 +1,4 @@
 ﻿using Ardalis.Specification;
-using AutoMapper;
 using Core.Application.Generics;
 using Infrastructure.Contexts;
 using Infrastructure.Generics;
@@ -10,29 +9,39 @@ using Microsoft.Extensions.DependencyInjection;
 namespace Infrastructure.ServiceExt;
 
 /// <summary>
-///     Расширение в котором описываем все настройки, сервисы и middleware
+///     Расширения для конфигурации служб и middleware для проекта LeylaSite.
 /// </summary>
 public static class LeylaSiteServicesExtension
 {
+    /// <summary>
+    ///     Регистрация всех необходимых сервисов и настроек для проекта LeylaSite.
+    ///     Включает настройку контекста базы данных, репозиториев, сервисов и AutoMapper.
+    /// </summary>
+    /// <param name="services">
+    ///     Коллекция сервисов для регистрации зависимостей.
+    /// </param>
+    /// <param name="configuration">
+    ///     Конфигурация приложения для получения строк подключения и других настроек.
+    /// </param>
+    /// <returns>Обновлённая коллекция сервисов.</returns>
     public static IServiceCollection RegisterLeylaSiteServices(this IServiceCollection services,
         IConfiguration configuration)
     {
-        // Контекст Базы Данных
+        // Настройка контекста базы данных
         services.AddDbContext<LeylaSiteDbContext>(options =>
-            options.UseNpgsql(configuration.GetConnectionString("ConnectionString"),
+            options.UseNpgsql(configuration.GetConnectionString("DefaultConnection"),
                 builder => builder.MigrationsAssembly(typeof(LeylaSiteDbContext).Assembly.FullName)));
 
-        #region Внедрение сервисов и репозитори
+        #region Внедрение зависимостей для репозиториев и сервисов
 
-        // Универсальный репозитори
-        services.AddScoped(typeof(IRepositoryBase<>), typeof(GenericRepositoryImpl<>));
-        // Универсальный сервис с логическим удалением
-        services.AddScoped(typeof(IGenericService<>), typeof(GenericServiceImpl<>));
+        // Регистрация универсального репозитория
+        services.AddScoped(typeof(IRepositoryBase<>), typeof(GenericRepository<>));
+        // Регистрация универсального сервиса
+        services.AddScoped(typeof(IGenericService<>), typeof(GenericService<>));
 
         #endregion
 
-        // Автомаппер
-        services.AddScoped(typeof(IMapperBase), typeof(Mapper));
+        // Настройка AutoMapper
         services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
         return services;

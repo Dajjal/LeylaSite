@@ -3,14 +3,22 @@
 namespace Core.Domain.Abstracts;
 
 /// <summary>
-///     Абстрактная модель с базовыми полями (ID, IsDeleted)
+///     Абстрактная модель, содержащая базовые поля, такие как ID и IsDeleted.
+///     Этот класс предназначен для сущностей с идентификатором типа <see cref="Guid" />.
 /// </summary>
 /// <remarks>
 ///     <para>
-///         ID - Идентификатор с типом поля - Guid
+///         <see cref="Id" /> - Идентификатор сущности, тип <see cref="Guid" />.
 ///     </para>
 ///     <para>
-///         IsDeleted - Поле по которому ведётся логическое удаление с типом - Boolean
+///         <see cref="IsDeleted" /> - Логическое поле, указывающее, удалена ли сущность, тип <see cref="bool" />.
+///     </para>
+///     <para>
+///         Этот класс следует использовать в качестве базового для всех моделей, где требуется стандартный идентификатор
+///         и механизм логического удаления.
 ///     </para>
 /// </remarks>
-public abstract class AbstractGuidModel : GenericEntity<Guid>;
+public abstract class AbstractGuidModel : GenericEntity<Guid>
+{
+    // Дополнительные методы или свойства могут быть добавлены здесь в будущем
+}
