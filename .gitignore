@@ -6,4 +6,4 @@ riderModule.ini
 .idea
 .vs
 .DS_Store
-ClientApp/package-lock.json
+/Infrastructure/Migrations/*

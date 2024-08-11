@@ -9,6 +9,9 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Infrastructure.ServiceExt;
 
+/// <summary>
+///     Расширение в котором описываем все настройки, сервисы и middleware
+/// </summary>
 public static class LeylaSiteServicesExtension
 {
     public static IServiceCollection RegisterLeylaSiteServices(this IServiceCollection services,
@@ -24,9 +27,7 @@ public static class LeylaSiteServicesExtension
         // Универсальный репозитори
         services.AddScoped(typeof(IRepositoryBase<>), typeof(GenericRepositoryImpl<>));
         // Универсальный сервис с логическим удалением
-        services.AddScoped(typeof(IGenericService<>), typeof(GenericLogicalDeleteServiceImpl<>));
-        // Универсальный сервис с физическим удалением в Базе Данных
-        services.AddScoped(typeof(IGenericService<>), typeof(GenericPhysicalDeleteServiceImpl<>));
+        services.AddScoped(typeof(IGenericService<>), typeof(GenericServiceImpl<>));
 
         #endregion
 
