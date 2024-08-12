@@ -79,125 +79,22 @@ import {NzFlexModule} from "ng-zorro-antd/flex";
 import {IconDefinition} from '@ant-design/icons-angular';
 import * as AllIcons from '@ant-design/icons-angular/icons';
 
-import {NgOptimizedImage, registerLocaleData} from '@angular/common';
-import ru from '@angular/common/locales/ru';
+import {registerLocaleData} from '@angular/common';
+
 
 import {provideAnimationsAsync} from "@angular/platform-browser/animations/async";
-import {TranslateModule} from "@ngx-translate/core";
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 
-const antDesignIcons: { [p: string]: IconDefinition } = AllIcons as {
-  [key: string]: IconDefinition;
-};
-const icons: IconDefinition[] = Object.keys(antDesignIcons).map((key: string) => antDesignIcons[key])
 
-registerLocaleData(ru);
 
-const NgZorroModules = [
-  NzAffixModule,
-  NzAlertModule,
-  NzAnchorModule,
-  NzAutocompleteModule,
-  NzAvatarModule,
-  NzBackTopModule,
-  NzBadgeModule,
-  NzButtonModule,
-  NzBreadCrumbModule,
-  NzCalendarModule,
-  NzCardModule,
-  NzCarouselModule,
-  NzCascaderModule,
-  NzCheckboxModule,
-  NzCollapseModule,
-  NzCommentModule,
-  // NzCronExpressionModule,
-  NzDatePickerModule,
-  NzDescriptionsModule,
-  NzDividerModule,
-  NzDrawerModule,
-  NzDropDownModule,
-  NzEmptyModule,
-  NzFormModule,
-  NzGridModule,
-  NzI18nModule,
-  NzIconModule,
-  NzImageModule,
-  NzInputModule,
-  NzInputNumberModule,
-  NzLayoutModule,
-  NzListModule,
-  NzMentionModule,
-  NzMenuModule,
-  NzMessageModule,
-  NzModalModule,
-  NzNoAnimationModule,
-  NzNotificationModule,
-  NzPageHeaderModule,
-  NzPaginationModule,
-  NzPopconfirmModule,
-  NzPopoverModule,
-  NzProgressModule,
-  NzRadioModule,
-  NzRateModule,
-  NzResultModule,
-  NzSegmentedModule,
-  NzSelectModule,
-  NzSkeletonModule,
-  NzSliderModule,
-  NzSpaceModule,
-  NzSpinModule,
-  NzStatisticModule,
-  NzStepsModule,
-  NzSwitchModule,
-  NzTableModule,
-  NzTabsModule,
-  NzTagModule,
-  NzTimePickerModule,
-  NzTimelineModule,
-  NzToolTipModule,
-  NzTransButtonModule,
-  NzTransferModule,
-  NzTreeModule,
-  NzTreeViewModule,
-  NzTreeSelectModule,
-  NzTypographyModule,
-  NzUploadModule,
-  NzWaveModule,
-  NzResizableModule,
-  NzPipesModule,
-  // NzCodeEditorModule,
-  // NzGraphModule,
-  NzQRCodeModule,
-  NzWaterMarkModule,
-  NzFlexModule,
-]
+
 
 @NgModule({
   declarations: [],
-  imports: [
-    // AntDesign Components
-    ...NgZorroModules,
-    //////////////////////////////
-    TranslateModule,
-    ReactiveFormsModule,
-    FormsModule,
-    NgOptimizedImage
-  ],
-  exports: [
-    // AntDesign Components
-    ...NgZorroModules,
-    //////////////////////////////
-    TranslateModule,
-    ReactiveFormsModule,
-    FormsModule,
-    NgOptimizedImage,
-  ],
+  imports: [],
+  exports: [],
   providers: [
-    {provide: NZ_I18N, useValue: ru_RU},
-    provideAnimationsAsync(),
-    // {provide: NZ_ICONS, useValue: icons},
-    // {provide: NZ_I18N, useValue: ru_RU}
+
   ]
 })
 export class SharedModule {

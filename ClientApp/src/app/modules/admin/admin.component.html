@@ -1,4 +1,11 @@
-<div [nzVertical]="false" nz-flex>
-  <div class="bg-red-500"></div>
-  <div class="bg-green-400"></div>
+<div nz-flex [nzVertical]="false">
+  <app-sidebar-nav></app-sidebar-nav>
+  <nz-layout>
+    <nz-header nz-flex nzJustify="end" nzAlign="center">
+      <nz-avatar nzSize="large" nzIcon="user"></nz-avatar>
+    </nz-header>
+    <nz-content>
+      <div class="inner-content">Content</div>
+    </nz-content>
+  </nz-layout>
 </div>

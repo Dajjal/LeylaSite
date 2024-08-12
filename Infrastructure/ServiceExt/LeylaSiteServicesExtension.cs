@@ -38,6 +38,8 @@ public static class LeylaSiteServicesExtension
         services.AddScoped(typeof(IRepositoryBase<>), typeof(GenericRepository<>));
         // Регистрация универсального сервиса
         services.AddScoped(typeof(IGenericService<>), typeof(GenericService<>));
+        
+        
 
         #endregion
 

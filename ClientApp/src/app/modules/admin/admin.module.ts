@@ -1,16 +1,21 @@
 import {NgModule} from '@angular/core';
 import {AdminComponent} from './admin.component';
 import {AdminRoutingModule} from "./admin-routing.module";
-import {SharedModule} from "../shared/shared.module";
+import {SidebarNavComponent} from './components/sidebar-nav/sidebar-nav.component';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {NgZorroModule} from "../shared/ng-zorro.module";
 
 
 @NgModule({
   declarations: [
-    AdminComponent
+    AdminComponent,
+    SidebarNavComponent
   ],
   imports: [
     AdminRoutingModule,
-    SharedModule
+    NgZorroModule,
+    ReactiveFormsModule,
+    FormsModule,
   ]
 })
 export class AdminModule {
