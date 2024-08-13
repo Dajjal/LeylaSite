@@ -3,7 +3,7 @@ import {AdminComponent} from './admin.component';
 import {AdminRoutingModule} from "./admin-routing.module";
 import {SidebarNavComponent} from './components/sidebar-nav/sidebar-nav.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {NgZorroModule} from "../shared/ng-zorro.module";
+import {NgZorroModule} from "../ngzorro/ng-zorro.module";
 
 
 @NgModule({
